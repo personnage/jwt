@@ -16,6 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('join', 'AuthenticateController@register');
-Route::post('login', 'AuthenticateController@login');
-Route::get('restricted', 'HomeController@index');
+// Authentication Routes...
+Route::post('login', 'Auth\AuthController@login');
+// Registration Routes...
+Route::post('register', 'Auth\AuthController@register');
