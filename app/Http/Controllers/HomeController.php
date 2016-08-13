@@ -11,6 +11,6 @@ class HomeController extends Controller
     {
         $user = JWTAuth::parseToken()->authenticate();
 
-        return ['Welcome'];
+        return ['Welcome '.$user->username];
     }
 }
