@@ -1,0 +1,16 @@
+*.sql
+*.sqlite
+
+.git
+.DS_Store
+node_modules
+public/storage/*
+/resources/assets/vendor/bower_components
+storage/app/*
+storage/logs/*
+vendor
+
+docker/*
+docker-compose.yml
+
+docs

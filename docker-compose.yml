@@ -1,0 +1,32 @@
+version: '2'
+services:
+  laravel:
+    build:
+      context: ./
+      dockerfile: ./docker/laravel/Dockerfile
+    ports:
+      - 8080:8000
+    links:
+      - postgres:db
+    volumes:
+      # RW (Laravel spec)
+      # - /var/www/html/storage
+      # - /var/www/html/bootstrap/cache
+      # Mount
+      - ./:/var/www/html
+
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_DB: ${DB_DATABASE}
+      PGDATA: /var/lib/postgresql/data/dbstore
+    volumes:
+      - jwt_dbstore:/var/lib/postgresql/data/dbstore
+
+volumes:
+  jwt_dbstore:
+    external: false
