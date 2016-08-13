@@ -7,17 +7,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function __construct()
-    {
-        //
-    }
-
     public function index(Request $request)
     {
         $user = JWTAuth::parseToken()->authenticate();
 
-        return [
-            'message' => sprintf('Hello, %s', $user->username),
-        ];
+        return ['Welcome'];
     }
 }
