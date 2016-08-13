@@ -23,4 +23,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function claims()
+    {
+        return [
+            'email' => $this->email,
+            'username' => $this->username,
+        ];
+    }
 }
