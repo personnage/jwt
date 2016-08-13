@@ -20,3 +20,9 @@ Route::get('/', function () {
 Route::post('login', 'Auth\AuthController@login');
 // Registration Routes...
 Route::post('register', 'Auth\AuthController@register');
+
+// Restricted
+Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::get('home', 'HomeController@index');
+});
+
