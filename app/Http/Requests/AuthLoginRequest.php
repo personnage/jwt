@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
-
-class SignInRequest extends Request
+class AuthLoginRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,6 +21,6 @@ class SignInRequest extends Request
      */
     public function rules()
     {
-        return ['email' => 'required|email|max:255'];
+        return ['username' => 'required', 'password' => 'required'];
     }
 }
