@@ -7,8 +7,11 @@
 */
 
 Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
-    Route::post('login', 'Auth\AuthController@login');
-    Route::post('register', 'Auth\AuthController@register');
+    Route::group(['namespace' => 'Auth'], function () {
+        Route::post('login', 'AuthController@login');
+        Route::post('register', 'AuthController@register');
+        Route::post('password/email', 'PasswordController@sendResetLinkEmail');
+    });
 
     Route::group(['prefix' => 'token', 'namespace' => 'Auth'], function () {
         Route::get('payload', 'TokenController@payload');
