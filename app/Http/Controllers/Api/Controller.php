@@ -25,6 +25,11 @@ class Controller extends BaseController
         return response()->json($data, $this->getStatusCode(), $headers);
     }
 
+    public function respondEmpty(array $headers = [])
+    {
+        return $this->setStatusCode(204)->respond(null, $headers);
+    }
+
     public function respondNotFound($message = 'Not Found!')
     {
         return $this->setStatusCode(404)->respondWithError($message);
