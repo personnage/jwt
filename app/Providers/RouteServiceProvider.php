@@ -55,7 +55,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebRoutes(Router $router)
     {
         $router->group([
-            'namespace' => $this->namespace, 'middleware' => 'jwt',
+            'namespace' => $this->namespace, 'middleware' => ['web'],
         ], function ($router) {
             require base_path('routes/web.php');
         });
@@ -72,7 +72,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes(Router $router)
     {
         $router->group([
-            'middleware' => ['api', 'auth:api'],
+            'middleware' => ['api'],
             'namespace' => $this->namespace,
             'prefix' => 'api',
         ], function ($router) {

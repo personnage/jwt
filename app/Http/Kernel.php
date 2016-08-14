@@ -34,10 +34,6 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
         ],
-
-        'jwt' => [
-            //
-        ],
     ];
 
     /**

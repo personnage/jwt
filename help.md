@@ -3,7 +3,7 @@
 ## Sign Up
 
 ### Create user (John Doe)
-    http -j -f post 192.168.99.100:8080/register \
+    http -j -f post 192.168.99.100:8080/api/v1/register \
     username='John Doe' \
     email=john@example.com \
     password=1234567
@@ -13,27 +13,17 @@
     Cache-Control: no-cache
     Connection: close
     Content-Type: application/json
-    Date: Sat, 13 Aug 2016 10:27:39 GMT
+    Date: Sat, 13 Aug 2016 18:54:25 GMT
     Host: 192.168.99.100:8080
     X-Powered-By: PHP/7.0.9
+    X-RateLimit-Limit: 60
+    X-RateLimit-Remaining: 59
     {
-        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImpvaG5AZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6IkpvaG4gRG9lIiwic3ViIjo1LCJpc3MiOiJodHRwOlwvXC8xOTIuMTY4Ljk5LjEwMDo4MDgwXC9yZWdpc3RlciIsImlhdCI6MTQ3MTA4NDA1OSwiZXhwIjoxNDcxMDg3NjU5LCJuYmYiOjE0NzEwODQwNTksImp0aSI6ImVhNWZhYzMzMGNmOTYxOWIwMzIzNTFmZmZmMDU2MDcyIn0.1LVOyERVVc8WrU4xdWGqbZTBmBgBfeAS33n1Dg8ETCM"
-    }
-
-##### Payload
-    {
-      "email": "john@example.com",
-      "username": "John Doe",
-      "sub": 5,
-      "iss": "http://192.168.99.100:8080/register",
-      "iat": 1471084059,
-      "exp": 1471087659,
-      "nbf": 1471084059,
-      "jti": "ea5fac330cf9619b032351ffff056072"
+        "ok": true
     }
 
 ### Create user (Judy Doe)
-    http -j -f post 192.168.99.100:8080/register \
+    http -j -f post 192.168.99.100:8080/api/v1/register \
     username='Judy Doe' \
     email=judy@example.com \
     password=1234567
@@ -43,28 +33,17 @@
     Cache-Control: no-cache
     Connection: close
     Content-Type: application/json
-    Date: Sat, 13 Aug 2016 10:28:19 GMT
+    Date: Sat, 13 Aug 2016 18:55:09 GMT
     Host: 192.168.99.100:8080
     X-Powered-By: PHP/7.0.9
+    X-RateLimit-Limit: 60
+    X-RateLimit-Remaining: 58
     {
-        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imp1ZHlAZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6Ikp1ZHkgRG9lIiwic3ViIjo2LCJpc3MiOiJodHRwOlwvXC8xOTIuMTY4Ljk5LjEwMDo4MDgwXC9yZWdpc3RlciIsImlhdCI6MTQ3MTA4NDA5OSwiZXhwIjoxNDcxMDg3Njk5LCJuYmYiOjE0NzEwODQwOTksImp0aSI6ImM5M2MzNjkxYTgzODc5OGMwY2YyOTYyYmE5NmM5MDA5In0.J9yJ4bLHfFyyvb_bb1v5PzGKZaYPAW80U8mOzXKBnUM"
+        "ok": true
     }
-
-##### Payload
-    {
-      "email": "judy@example.com",
-      "username": "Judy Doe",
-      "sub": 6,
-      "iss": "http://192.168.99.100:8080/register",
-      "iat": 1471084099,
-      "exp": 1471087699,
-      "nbf": 1471084099,
-      "jti": "c93c3691a838798c0cf2962ba96c9009"
-    }
-
 
 ### Create user (Judy Snow) Bad email!
-    http -j -f post 192.168.99.100:8080/register \
+    http -j -f post 192.168.99.100:8080/api/v1/register \
     username='Judy Snow' \
     email=judy@example.com \
     password=1234567
@@ -74,9 +53,11 @@
     Cache-Control: no-cache
     Connection: close
     Content-Type: application/json
-    Date: Sat, 13 Aug 2016 10:30:23 GMT
+    Date: Sat, 13 Aug 2016 18:55:31 GMT
     Host: 192.168.99.100:8080
     X-Powered-By: PHP/7.0.9
+    X-RateLimit-Limit: 60
+    X-RateLimit-Remaining: 57
     {
         "email": [
             "The email has already been taken."
@@ -88,7 +69,7 @@
 ## Sign In
 
 ### Login user (John Doe)
-    http -j -f post 192.168.99.100:8080/login \
+    http -j -f post 192.168.99.100:8080/api/v1/login \
     username='John Doe' \
     password=1234567
 
@@ -115,7 +96,7 @@
     }
 
 ### Login user (Judy Doe)
-    http -j -f post 192.168.99.100:8080/login \
+    http -j -f post 192.168.99.100:8080/api/v1/login \
     username='Judy Doe' \
     password=1234567
 
@@ -142,7 +123,7 @@
     }
 
 ### Login user (Not credentials)
-    http -j -f post 192.168.99.100:8080/login
+    http -j -f post 192.168.99.100:8080/api/v1/login
 
 #### Answer
     HTTP/1.1 422 Unprocessable Entity
@@ -167,7 +148,7 @@
 ## Restrict (Authorization: Bearer <token>)
 
 ### Token missing
-    http -j -f get 192.168.99.100:8080/home
+    http -j -f get 192.168.99.100:8080/api/v1/home
 
 #### Answer
     HTTP/1.1 400 Bad Request
@@ -198,8 +179,8 @@
     }
 
 ### Access allowed
-    http -j -f get 192.168.99.100:8080/home \
-    Authorization:'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImpvaG5AZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6IkpvaG4gRG9lIiwic3ViIjo1LCJpc3MiOiJodHRwOlwvXC8xOTIuMTY4Ljk5LjEwMDo4MDgwXC9yZWdpc3RlciIsImlhdCI6MTQ3MTA4NDA1OSwiZXhwIjoxNDcxMDg3NjU5LCJuYmYiOjE0NzEwODQwNTksImp0aSI6ImVhNWZhYzMzMGNmOTYxOWIwMzIzNTFmZmZmMDU2MDcyIn0.1LVOyERVVc8WrU4xdWGqbZTBmBgBfeAS33n1Dg8ETCM'
+    http -j -f get 192.168.99.100:8080/api/v1/home \
+    Authorization:'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6XC9cLzE5Mi4xNjguOTkuMTAwOjgwODBcL2FwaVwvdjFcL2xvZ2luIiwiaWF0IjoxNDcxMTEyMTYwLCJleHAiOjE0NzExMTU3NjAsIm5iZiI6MTQ3MTExMjE2MCwianRpIjoiYzYyNjI5ZmZjY2Q4NmI3M2NkZGIyZjA5YzkyYzgxNDkifQ.Mapp4fLE_9Wccgz3LJ-88ejuMm4Ci6oH55mUNC_qUPk'
 
 #### Answer
     HTTP/1.1 200 OK

@@ -2,20 +2,26 @@
 
 namespace App\Http\Controllers\Auth;
 
-use JWTAuth;
 use App\User;
-use App\Http\Requests\AuthJoinRequest;
-use App\Http\Requests\AuthLoginRequest;
-use Tymon\JWTAuth\Exceptions\JWTException;
-use Illuminate\Http\Request;
+use Validator;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    /*
+    |--------------------------------------------------------------------------
+    | Registration & Login Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new users, as well as the
+    | authentication of existing users. By default, this controller uses
+    | a simple trait to add these behaviors. Why don't you explore it?
+    |
+    */
 
-    protected $username = 'username';
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
      * Where to redirect users after login / registration.
@@ -35,54 +41,18 @@ class AuthController extends Controller
     }
 
     /**
-     * Handle a registration request for the application.
+     * Get a validator for an incoming registration request.
      *
-     * @param  AuthJoinRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function register(AuthJoinRequest $request)
+    protected function validator(array $data)
     {
-        $user = $this->create($request->all());
-        $token = JWTAuth::fromUser($user, $user->claims());
-
-         return $this->setStatusCode(201)->respond(compact('token'));
-    }
-
-    /**
-     * Handle a login request to the application.
-     *
-     * @param  AuthLoginRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function login(AuthLoginRequest $request)
-    {
-        $credentials = $this->getCredentials($request);
-
-        try {
-            // attempt to verify the credentials and create a token for the user
-            if (! $token = JWTAuth::attempt($credentials)) {
-                return $this->setStatusCode(401)
-                    ->respondWithError('These credentials do not match our records')
-                ;
-            }
-        } catch (JWTException $e) {
-            // something went wrong whilst attempting to encode the token
-            return $this->setStatusCode(500)->respondWithError('Could not create token');
-        }
-
-        // all good so return the token
-        return $this->respond(compact('token', 'user'));
-    }
-
-    /**
-     * Get the needed authorization credentials from the request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    protected function getCredentials(Request $request)
-    {
-        return $request->only($this->loginUsername(), 'password');
+        return Validator::make($data, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
+        ]);
     }
 
     /**
@@ -94,8 +64,8 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
+            'name' => $data['name'],
             'email' => $data['email'],
-            'username' => $data['username'],
             'password' => bcrypt($data['password']),
         ]);
     }

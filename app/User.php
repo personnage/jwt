@@ -24,11 +24,17 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function claims()
+    public function claims(array $customClaims = [])
     {
-        return [
+        return array_merge([
+            'name' => $this->name,
             'email' => $this->email,
             'username' => $this->username,
-        ];
+        ], $customClaims);
+    }
+
+    public static function byUsername(string $username)
+    {
+        return static::whereUsername($username);
     }
 }

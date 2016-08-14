@@ -2,15 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use JWTAuth;
+use App\Http\Requests;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(Request $request)
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        $user = JWTAuth::parseToken()->authenticate();
+        $this->middleware('auth');
+    }
 
-        return ['Welcome '.$user->username];
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
     }
 }
