@@ -8,8 +8,6 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        // return [auth()->user()];
-
-        return $request->user();
+        return $this->respond($request->user());
     }
 }

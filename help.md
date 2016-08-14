@@ -13,7 +13,7 @@
     Cache-Control: no-cache
     Connection: close
     Content-Type: application/json
-    Date: Sat, 13 Aug 2016 18:54:25 GMT
+    Date: Sun, 14 Aug 2016 08:20:24 GMT
     Host: 192.168.99.100:8080
     X-Powered-By: PHP/7.0.9
     X-RateLimit-Limit: 60
@@ -33,7 +33,7 @@
     Cache-Control: no-cache
     Connection: close
     Content-Type: application/json
-    Date: Sat, 13 Aug 2016 18:55:09 GMT
+    Date: Sun, 14 Aug 2016 08:20:45 GMT
     Host: 192.168.99.100:8080
     X-Powered-By: PHP/7.0.9
     X-RateLimit-Limit: 60
@@ -53,7 +53,7 @@
     Cache-Control: no-cache
     Connection: close
     Content-Type: application/json
-    Date: Sat, 13 Aug 2016 18:55:31 GMT
+    Date: Sun, 14 Aug 2016 08:21:06 GMT
     Host: 192.168.99.100:8080
     X-Powered-By: PHP/7.0.9
     X-RateLimit-Limit: 60
@@ -78,21 +78,26 @@
     Cache-Control: no-cache
     Connection: close
     Content-Type: application/json
-    Date: Sat, 13 Aug 2016 10:32:50 GMT
+    Date: Sun, 14 Aug 2016 08:21:24 GMT
     Host: 192.168.99.100:8080
     X-Powered-By: PHP/7.0.9
+    X-RateLimit-Limit: 60
+    X-RateLimit-Remaining: 59
     {
-        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUsImlzcyI6Imh0dHA6XC9cLzE5Mi4xNjguOTkuMTAwOjgwODBcL2xvZ2luIiwiaWF0IjoxNDcxMDg0MzcwLCJleHAiOjE0NzEwODc5NzAsIm5iZiI6MTQ3MTA4NDM3MCwianRpIjoiZmFjZGExMDk2MDZlOTFlNDhmYTM3ODExMzE5NjhlYmYifQ.GP40hgHbaPBmFo-7TZW1-Olj2OpboA9Wi8iG72mWRKs"
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6XC9cLzE5Mi4xNjguOTkuMTAwOjgwODBcL2FwaVwvdjFcL2xvZ2luIiwiaWF0IjoxNDcxMTYyODg0LCJleHAiOjE0NzExNjY0ODQsIm5iZiI6MTQ3MTE2Mjg4NCwianRpIjoiMTEyYmZhYmM3ZWYzOTk2ZDA5ZTkwNjExNjQ3MWNmMDYiLCJuYW1lIjpudWxsLCJlbWFpbCI6ImpvaG5AZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6IkpvaG4gRG9lIn0.AewqGz3Lpnl7_utRmTTw-hxQ_M_0NEQomYz2s7HLhKM"
     }
 
 ##### Payload
     {
-      "sub": 5,
-      "iss": "http://192.168.99.100:8080/login",
-      "iat": 1471084370,
-      "exp": 1471087970,
-      "nbf": 1471084370,
-      "jti": "facda109606e91e48fa3781131968ebf"
+      "sub": 1,
+      "iss": "http://192.168.99.100:8080/api/v1/login",
+      "iat": 1471162884,
+      "exp": 1471166484,
+      "nbf": 1471162884,
+      "jti": "112bfabc7ef3996d09e906116471cf06",
+      "name": null,
+      "email": "john@example.com",
+      "username": "John Doe"
     }
 
 ### Login user (Judy Doe)
@@ -105,21 +110,26 @@
     Cache-Control: no-cache
     Connection: close
     Content-Type: application/json
-    Date: Sat, 13 Aug 2016 10:34:57 GMT
+    Date: Sun, 14 Aug 2016 08:22:08 GMT
     Host: 192.168.99.100:8080
     X-Powered-By: PHP/7.0.9
+    X-RateLimit-Limit: 60
+    X-RateLimit-Remaining: 58
     {
-        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjYsImlzcyI6Imh0dHA6XC9cLzE5Mi4xNjguOTkuMTAwOjgwODBcL2xvZ2luIiwiaWF0IjoxNDcxMDg0NDk3LCJleHAiOjE0NzEwODgwOTcsIm5iZiI6MTQ3MTA4NDQ5NywianRpIjoiYTJiM2VmNTU5MjA1MzgwODQzZTkxZWFmN2RkMjc5NmQifQ.GVCOZx63pzCHBZ3BjJxgrP5mGnMJOgVliU2rDis-7CE"
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6XC9cLzE5Mi4xNjguOTkuMTAwOjgwODBcL2FwaVwvdjFcL2xvZ2luIiwiaWF0IjoxNDcxMTYyOTI4LCJleHAiOjE0NzExNjY1MjgsIm5iZiI6MTQ3MTE2MjkyOCwianRpIjoiYzY1Nzg3MWEyZDI3ZDExMzA5ZDNlZmNmZDdhMTBkYjYiLCJuYW1lIjpudWxsLCJlbWFpbCI6Imp1ZHlAZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6Ikp1ZHkgRG9lIn0.PV3gHm8lzu3BJpoXMwpfNnRyQ_PMbe_ILtc6TpF_KAs"
     }
 
 ##### Payload
     {
-      "sub": 6,
-      "iss": "http://192.168.99.100:8080/login",
-      "iat": 1471084497,
-      "exp": 1471088097,
-      "nbf": 1471084497,
-      "jti": "a2b3ef559205380843e91eaf7dd2796d"
+      "sub": 2,
+      "iss": "http://192.168.99.100:8080/api/v1/login",
+      "iat": 1471162928,
+      "exp": 1471166528,
+      "nbf": 1471162928,
+      "jti": "c657871a2d27d11309d3efcfd7a10db6",
+      "name": null,
+      "email": "judy@example.com",
+      "username": "Judy Doe"
     }
 
 ### Login user (Not credentials)
@@ -130,9 +140,11 @@
     Cache-Control: no-cache
     Connection: close
     Content-Type: application/json
-    Date: Sat, 13 Aug 2016 10:36:22 GMT
+    Date: Sun, 14 Aug 2016 08:22:35 GMT
     Host: 192.168.99.100:8080
     X-Powered-By: PHP/7.0.9
+    X-RateLimit-Limit: 60
+    X-RateLimit-Remaining: 57
     {
         "password": [
             "The password field is required."
@@ -155,15 +167,18 @@
     Cache-Control: no-cache
     Connection: close
     Content-Type: application/json
-    Date: Sat, 13 Aug 2016 10:41:13 GMT
+    Date: Sun, 14 Aug 2016 08:22:56 GMT
     Host: 192.168.99.100:8080
     X-Powered-By: PHP/7.0.9
+    X-RateLimit-Limit: 60
+    X-RateLimit-Remaining: 59
+
     {
         "error": "token_not_provided"
     }
 
 ### Token invalid
-    http -j -f get 192.168.99.100:8080/home \
+    http -j -f get 192.168.99.100:8080/api/v1/home \
     Authorization:'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImpvaG5AZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6IkpvaG4gRG9lIiwic3ViIjo1LCJpc3MiOiJodHRwOlwvXC8xOTIuMTY4Ljk5LjEwMDo4MDgwXC9yZWdpc3RlciIsImlhdCI6MTQ3MTA4NDA1OSwiZXhwIjoxNDcxMDg3NjU5LCJuYmYiOjE0NzEwODQwNTksImp0aSI6ImVhNWZhYzMzMGNmOTYxOWIwMzIzNTFmZmZmMDU2MDcyIn0.1LVOyERVVc8WrU4xdWGqbZTBmBgBfeAS33n1Dg8ETCX'
 
 #### Answer
@@ -171,26 +186,41 @@
     Cache-Control: no-cache
     Connection: close
     Content-Type: application/json
-    Date: Sat, 13 Aug 2016 10:50:29 GMT
+    Date: Sun, 14 Aug 2016 08:23:20 GMT
     Host: 192.168.99.100:8080
     X-Powered-By: PHP/7.0.9
+    X-RateLimit-Limit: 60
+    X-RateLimit-Remaining: 58
     {
         "error": "token_invalid"
     }
 
 ### Access allowed
     http -j -f get 192.168.99.100:8080/api/v1/home \
-    Authorization:'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6XC9cLzE5Mi4xNjguOTkuMTAwOjgwODBcL2FwaVwvdjFcL2xvZ2luIiwiaWF0IjoxNDcxMTEyMTYwLCJleHAiOjE0NzExMTU3NjAsIm5iZiI6MTQ3MTExMjE2MCwianRpIjoiYzYyNjI5ZmZjY2Q4NmI3M2NkZGIyZjA5YzkyYzgxNDkifQ.Mapp4fLE_9Wccgz3LJ-88ejuMm4Ci6oH55mUNC_qUPk'
+    Authorization:'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6XC9cLzE5Mi4xNjguOTkuMTAwOjgwODBcL2FwaVwvdjFcL2xvZ2luIiwiaWF0IjoxNDcxMTYyODg0LCJleHAiOjE0NzExNjY0ODQsIm5iZiI6MTQ3MTE2Mjg4NCwianRpIjoiMTEyYmZhYmM3ZWYzOTk2ZDA5ZTkwNjExNjQ3MWNmMDYiLCJuYW1lIjpudWxsLCJlbWFpbCI6ImpvaG5AZXhhbXBsZS5jb20iLCJ1c2VybmFtZSI6IkpvaG4gRG9lIn0.AewqGz3Lpnl7_utRmTTw-hxQ_M_0NEQomYz2s7HLhKM'
 
 #### Answer
     HTTP/1.1 200 OK
     Cache-Control: no-cache
     Connection: close
     Content-Type: application/json
-    Date: Sat, 13 Aug 2016 10:48:42 GMT
+    Date: Sun, 14 Aug 2016 08:25:10 GMT
     Host: 192.168.99.100:8080
     X-Powered-By: PHP/7.0.9
-
-    [
-        "Welcome"
-    ]
+    X-RateLimit-Limit: 60
+    X-RateLimit-Remaining: 59
+    {
+        "created_at": "2016-08-14 08:20:24",
+        "current_sign_in_at": "2016-08-14 08:21:24",
+        "current_sign_in_ip": "192.168.99.1",
+        "deleted_at": null,
+        "email": "john@example.com",
+        "failed_attempts": 0,
+        "id": 1,
+        "last_sign_in_at": null,
+        "last_sign_in_ip": null,
+        "name": null,
+        "sign_in_count": 1,
+        "updated_at": "2016-08-14 08:21:24",
+        "username": "John Doe"
+    }
