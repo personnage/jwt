@@ -1,4 +1,4 @@
-.PHONY: up down build serve migrate
+.PHONY: up down build serve migrate clearcache
 
 up:
 	docker-compose config -q && \
@@ -19,3 +19,12 @@ serve:
 migrate:
 	docker-compose config -q && \
 	docker-compose exec laravel php artisan migrate:refresh
+
+clearcache:
+	docker-compose exec laravel php artisan cache:clear; \
+	docker-compose exec laravel php artisan clear-compiled; \
+	docker-compose exec laravel php artisan config:clear; \
+	docker-compose exec laravel php artisan route:clear; \
+	docker-compose exec laravel php artisan view:clear; \
+	docker-compose exec laravel php artisan optimize; \
+	true
