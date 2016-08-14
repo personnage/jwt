@@ -7,6 +7,7 @@ services:
     ports:
       - 8080:8000
     links:
+      - redis
       - postgres:db
     volumes:
       # RW (Laravel spec)
@@ -26,6 +27,9 @@ services:
       PGDATA: /var/lib/postgresql/data/dbstore
     volumes:
       - jwt_dbstore:/var/lib/postgresql/data/dbstore
+
+  redis:
+    image: redis
 
 volumes:
   jwt_dbstore:
