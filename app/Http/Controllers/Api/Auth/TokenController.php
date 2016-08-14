@@ -11,12 +11,22 @@ use Illuminate\Http\Request;
 
 class TokenController extends Controller
 {
+    /**
+     * Create a new token controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('jwt.auth', ['only' => ['payload']]);
         $this->middleware('jwt.refresh', ['only' => ['forceRefresh']]);
     }
 
+    /**
+     * Get the raw Payload instance.
+     *
+     * @return array
+     */
     public function payload()
     {
         $payload = JWTAuth::parseToken()->getPayload()->toArray();
@@ -24,6 +34,11 @@ class TokenController extends Controller
         return $this->respond(compact('payload'));
     }
 
+    /**
+     * Refresh an expired token.
+     *
+     * @return string
+     */
     public function refresh(Request $request)
     {
         try {
@@ -48,6 +63,11 @@ class TokenController extends Controller
         return $this->respond(compact('token'));
     }
 
+    /**
+     * Refresh an expired token.
+     *
+     * @return null
+     */
     public function forceRefresh()
     {
         return $this->respondEmpty();
